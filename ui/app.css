@@ -63,25 +63,37 @@ button { font: inherit; color: inherit; }
 .wbtn:hover { color: var(--text); background: var(--raise-2); }
 .wbtn.close:hover { background: #e5484d; color: #fff; }
 
-/* ---- pestañas: una fila que se corre con la rueda ---- */
+/* ---- pestañas: una lista a la izquierda, todas a la vista; si no entran, una barra mínima ---- */
+.cuerpo { flex: 1; min-height: 0; display: flex; border-top: 1px solid var(--hair); }
 .tabs {
-  flex: none; display: flex; gap: 2px; padding: 0 10px;
-  overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
-  border-bottom: 1px solid var(--hair);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10px, #000 calc(100% - 10px), transparent 100%);
+  flex: none; width: 152px; display: flex; flex-direction: column; gap: 1px;
+  padding: 10px 8px; overflow-y: auto; overflow-x: hidden;
+  border-right: 1px solid var(--hair);
 }
+.tabs::-webkit-scrollbar { width: 6px; }
+.tabs::-webkit-scrollbar-button { display: none; }
+.tabs::-webkit-scrollbar-track { background: transparent; }
+.tabs::-webkit-scrollbar-thumb { background: transparent; border: 2px solid transparent; border-radius: 6px; background-clip: padding-box; }
+.tabs:hover::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, .1); }
 .tab {
   flex: none; position: relative;
-  display: inline-flex; align-items: center; gap: 6px;
-  height: 32px; padding: 0 8px; border: 0; background: transparent; cursor: pointer;
-  font-size: 10.5px; letter-spacing: .04em; color: var(--muted); white-space: nowrap;
-  transition: color .2s;
+  display: grid; grid-template-columns: 5px minmax(0, 1fr) auto; align-items: center; gap: 8px;
+  height: 30px; padding: 0 9px; border: 0; border-radius: 9px; background: transparent; cursor: pointer;
+  font-size: 10.5px; letter-spacing: .03em; color: var(--muted); text-align: left; white-space: nowrap;
+  transition: color .2s, background-color .2s;
 }
-.tab:hover { color: var(--text-2); }
-.tab[aria-selected="true"] { color: var(--text); }
-.tab[aria-selected="true"]::after {
-  content: ""; position: absolute; left: 8px; right: 8px; bottom: 0; height: 1px; background: var(--text-2);
+.tab:hover { color: var(--text-2); background: var(--raise); }
+.tab[aria-selected="true"] { color: var(--text); background: var(--raise-2); }
+.tab[aria-selected="true"]::before {
+  content: ""; position: absolute; left: -8px; top: 8px; bottom: 8px; width: 2px; border-radius: 2px; background: var(--text-2);
 }
+.tab .nom { overflow: hidden; text-overflow: ellipsis; }
+.tab .pc { font-size: 9.5px; color: var(--dim); letter-spacing: 0; }
+.tab .pc[data-n="0"] { color: rgba(132, 212, 171, .8); }
+.tab .pc[data-n="1"] { color: rgba(240, 198, 116, .85); }
+.tab .pc[data-n="2"] { color: rgba(255, 143, 122, .9); }
+.tab .pc[data-n="3"] { color: var(--n3); }
+.tabs .sep { flex: none; height: 1px; margin: 5px 4px; background: var(--hair); }
 .dot { flex: none; width: 5px; height: 5px; border-radius: 50%; background: var(--dim); }
 .dot[data-n="0"] { background: var(--n0); }
 .dot[data-n="1"] { background: var(--n1); }

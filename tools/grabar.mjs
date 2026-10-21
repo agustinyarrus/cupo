@@ -141,7 +141,7 @@ const navegador = ['C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/
   .find((p) => fs.existsSync(p));
 const puerto = 9347;
 const proc = spawn(navegador, ['--headless=new', `--remote-debugging-port=${puerto}`, `--user-data-dir=${path.join(tmp, 'perfil')}`,
-  '--hide-scrollbars', '--force-device-scale-factor=1.5', '--window-size=400,560', '--no-first-run', 'about:blank'], { stdio: 'ignore' });
+  '--hide-scrollbars', '--force-device-scale-factor=1.5', '--window-size=540,560', '--no-first-run', 'about:blank'], { stdio: 'ignore' });
 const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 let lista;
 for (let i = 0; i < 50 && !lista; i++) {
@@ -169,7 +169,7 @@ const cdp = (method, params = {}) => new Promise((r) => {
   ws.send(JSON.stringify({ id, method, params }));
 });
 const evalua = async (js) => (await cdp('Runtime.evaluate', { expression: js, awaitPromise: true, returnByValue: true }))?.result?.value;
-const tamano = (alto) => cdp('Emulation.setDeviceMetricsOverride', { width: 400, height: alto, deviceScaleFactor: 1.5, mobile: false });
+const tamano = (alto) => cdp('Emulation.setDeviceMetricsOverride', { width: 540, height: alto, deviceScaleFactor: 1.5, mobile: false });
 const pestana = (id) => evalua(`document.querySelector('.tab[data-tab="${id}"]').click()`);
 
 await cdp('Page.enable');
@@ -183,7 +183,7 @@ for (const id of ids) {
   await tamano(560);
   await pestana(id);
   await espera(950);
-  const alto = await evalua(`document.getElementById('page').scrollHeight + 38 + 33 + 34 + 2`);
+  const alto = await evalua(`Math.max(document.getElementById('page').scrollHeight, document.getElementById('tabs').scrollHeight) + 38 + 1 + 34 + 2`);
   await tamano(Math.max(560, alto));
   await espera(300);
   const img = await cdp('Page.captureScreenshot', { format: 'png' });
@@ -191,7 +191,7 @@ for (const id of ids) {
   console.log('captura', id, alto);
 }
 
-// recorrido: el panel de verdad (400×560) pasando por todas las pestañas
+// recorrido: el panel de verdad (540×560) pasando por todas las pestañas
 await tamano(560);
 await pestana('todas');
 await espera(800);

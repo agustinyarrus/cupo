@@ -19,9 +19,9 @@ type rect struct{ L, T, R, B int32 }
 
 // Tamaños lógicos (a 100 %, 96 DPI) del panel.
 const (
-	panelWantW = 400 // tamaño inicial: una columna angosta, como los paneles de la bandeja
+	panelWantW = 540 // tamaño inicial: la lista de pestañas (152) y una columna de 388, como los paneles de la bandeja
 	panelWantH = 560
-	panelMinW  = 340 // mínimo: por debajo, el diseño no entra
+	panelMinW  = 460 // mínimo: por debajo, el diseño no entra
 	panelMinH  = 400
 	panelMarg  = 12 // separación del borde del área de trabajo al nacer junto a la bandeja
 )
@@ -60,13 +60,18 @@ func defaultGeom(dpi int32, work rect) (x, y, w, h int32) {
 }
 
 // fitGeom reubica una geometría guardada en un monitor con DPI monitorDPI y área de trabajo work. Si el DPI
-// cambió (la ventana se guardó en otro monitor), escala el tamaño. Después la achica si no entra y la mete
-// entera dentro del área de trabajo, para que nunca quede tapada por la barra ni fuera de la pantalla.
+// cambió (la ventana se guardó en otro monitor), escala el tamaño. La agranda hasta el mínimo (una guardada por una
+// versión con otro diseño puede ser más chica), la achica si no entra y la mete entera dentro del área de trabajo,
+// para que nunca quede tapada por la barra ni fuera de la pantalla.
 func fitGeom(g winGeom, monitorDPI int32, work rect) (x, y, w, h int32) {
 	w, h = g.W, g.H
 	if g.DPI > 0 && monitorDPI > 0 && monitorDPI != g.DPI {
 		w = int32(int64(g.W) * int64(monitorDPI) / int64(g.DPI))
 		h = int32(int64(g.H) * int64(monitorDPI) / int64(g.DPI))
+	}
+	if monitorDPI > 0 {
+		mw, mh := minSize(monitorDPI)
+		w, h = max(w, mw), max(h, mh)
 	}
 	if aw := work.R - work.L; w > aw {
 		w = aw

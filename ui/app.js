@@ -108,9 +108,15 @@
     if (tab !== 'todas' && !ias.some((x) => x.id === tab) && S.faltan === 0) tab = 'todas';
     const x = ias.find((i) => i.id === tab);
 
-    const tabs = [`<button class="tab" role="tab" data-tab="todas" aria-selected="${tab === 'todas'}">todas</button>`]
-      .concat(ias.map((i) => `<button class="tab" role="tab" data-tab="${esc(i.id)}" aria-selected="${i.id === tab}">` +
-        `<span class="dot${i.cargando ? ' carga' : ''}" data-n="${nivelIA(i)}"></span>${esc(i.nombre.toLowerCase())}</button>`)).join('');
+    // la lista de pestañas: cada IA con su punto y, si tiene ventanas de uso, el % de la más ajustada
+    const tabs = `<button class="tab" role="tab" data-tab="todas" aria-selected="${tab === 'todas'}"><span></span><span class="nom">todas</span></button><div class="sep"></div>` +
+      ias.map((i) => {
+        const p = principal(i);
+        const pc = p.medidor && !p.medidor.cuota ? vigente(p.medidor) : null;
+        return `<button class="tab" role="tab" data-tab="${esc(i.id)}" aria-selected="${i.id === tab}" title="${esc(i.nombre)}">` +
+          `<span class="dot${i.cargando ? ' carga' : ''}" data-n="${nivelIA(i)}"></span><span class="nom">${esc(i.nombre.toLowerCase())}</span>` +
+          (pc != null ? `<span class="pc" data-n="${nivel(pc)}">${pctTxt(pc)}%</span>` : '<span></span>') + '</button>';
+      }).join('');
     if (tabs !== htmlTabs) $('#tabs').innerHTML = htmlTabs = tabs;
 
     const page = x ? htmlIA(x) : htmlTodas(ias);
@@ -125,7 +131,7 @@
     }
     if (tab !== tabMostrada) {
       tabMostrada = tab;
-      $(`.tab[data-tab="${CSS.escape(tab)}"]`)?.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+      $(`.tab[data-tab="${CSS.escape(tab)}"]`)?.scrollIntoView({ block: 'nearest' });
     }
 
     // el punto del título: la primera ventana de la primera IA que tenga (el anillo de afuera del icono)
@@ -292,19 +298,15 @@
     else if (e.key === 'F5' || ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R'))) {
       e.preventDefault(); // WebView2 recargaría la página
       act('actualizar');
-    } else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && S) {
+    } else if (S && (e.key === 'ArrowRight' || e.key === 'ArrowLeft' ||
+      ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && e.target.closest?.('.tabs')))) { // ↑ ↓ sólo en la lista: si no, corren la página
+      e.preventDefault();
       const ids = ['todas', ...(S.ias || []).map((x) => x.id)];
-      const i = ids.indexOf(tab) + (e.key === 'ArrowRight' ? 1 : -1);
+      const i = ids.indexOf(tab) + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1);
       elegir(ids[(i + ids.length) % ids.length]);
+      $(`.tab[data-tab="${CSS.escape(tab)}"]`)?.focus();
     } else if (e.key === 'Enter' && e.target.dataset?.tab) elegir(e.target.dataset.tab);
   });
-
-  $('#tabs').addEventListener('wheel', (e) => {
-    if (e.deltaY) {
-      e.currentTarget.scrollLeft += e.deltaY;
-      e.preventDefault();
-    }
-  }, { passive: false });
 
   document.querySelectorAll('[data-drag]').forEach((n) => {
     n.addEventListener('mousedown', (e) => {

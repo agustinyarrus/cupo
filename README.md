@@ -16,7 +16,7 @@
 <h3 align="center">¿Cuánto te queda de Claude? ¿Y de Codex, de Antigravity, de Grok?<br>Un clic en la bandeja de Windows y lo sabés. De todas.</h3>
 
 <p align="center">
-  <img src="docs/pestanas.gif" width="400" alt="El panel de cupo recorriendo sus pestañas. La pestaña todas lista cada IA con su barra: Claude 62 % de la sesión, Codex 51 % de la semana, Antigravity agotado en Claude y GPT, Grok 44 %, Kimi y DeepSeek con su saldo. Después pasa por la pestaña de cada IA: Claude con sus cuatro tarjetas de límites, el reparto de la semana, la cuenta y los tokens de Claude Code por día; Codex con sus ventanas, créditos, estadísticas y un gráfico de 30 días; Antigravity con Gemini Flash y Pro, Claude y GPT y Gemini 4 Argon; y el resto.">
+  <img src="docs/pestanas.gif" width="540" alt="El panel de cupo recorriendo sus pestañas. La pestaña todas lista cada IA con su barra: Claude 62 % de la sesión, Codex 51 % de la semana, Antigravity agotado en Claude y GPT, Grok 44 %, Kimi y DeepSeek con su saldo. Después pasa por la pestaña de cada IA: Claude con sus cuatro tarjetas de límites, el reparto de la semana, la cuenta y los tokens de Claude Code por día; Codex con sus ventanas, créditos, estadísticas y un gráfico de 30 días; Antigravity con Gemini Flash y Pro, Claude y GPT y Gemini 4 Argon; y el resto.">
 </p>
 <p align="center"><sub>El panel de verdad recorriendo sus 12 pestañas, con datos de demo · <a href="docs/pestanas.webm">en video</a> · <a href="tools/grabar.mjs">cómo se grabó</a></sub></p>
 
@@ -121,7 +121,7 @@ Necesita Windows 10 u 11 con el runtime de WebView2 (viene con Windows 11 y con 
 | Acción | Cómo |
 |---|---|
 | Ver el panel | clic en el icono · se cierra al hacer clic afuera, con <kbd>Esc</kbd> o con la × |
-| Cambiar de pestaña | clic, la rueda del mouse sobre la fila, o <kbd>←</kbd> <kbd>→</kbd> |
+| Cambiar de pestaña | clic en la lista de la izquierda (cada IA con su color y su porcentaje), <kbd>↑</kbd> <kbd>↓</kbd> en la lista o <kbd>←</kbd> <kbd>→</kbd> |
 | Actualizar | botón "actualizar", <kbd>F5</kbd> o el menú del icono |
 | Salir | "salir" en el panel (dos toques), el menú del icono, o `cupo.exe --quit` |
 

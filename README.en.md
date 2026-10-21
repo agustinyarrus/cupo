@@ -16,7 +16,7 @@
 <h3 align="center">How much Claude do you have left? And Codex, Antigravity, Grok?<br>One click on the Windows tray and you know. For all of them.</h3>
 
 <p align="center">
-  <img src="docs/pestanas.gif" width="400" alt="The cupo panel going through its tabs. The all tab lists every AI with its bar: Claude at 62 % of the session, Codex at 51 % of the week, Antigravity exhausted on Claude and GPT, Grok at 44 %, Kimi and DeepSeek with their balance. Then each AI's tab: Claude with four limit cards, the week's breakdown, the account and Claude Code tokens per day; Codex with its windows, credits, stats and a 30-day chart; Antigravity with Gemini Flash and Pro, Claude and GPT and Gemini 4 Argon; and the rest.">
+  <img src="docs/pestanas.gif" width="540" alt="The cupo panel going through its tabs. The all tab lists every AI with its bar: Claude at 62 % of the session, Codex at 51 % of the week, Antigravity exhausted on Claude and GPT, Grok at 44 %, Kimi and DeepSeek with their balance. Then each AI's tab: Claude with four limit cards, the week's breakdown, the account and Claude Code tokens per day; Codex with its windows, credits, stats and a 30-day chart; Antigravity with Gemini Flash and Pro, Claude and GPT and Gemini 4 Argon; and the rest.">
 </p>
 <p align="center"><sub>The real panel going through its 12 tabs, with demo data · <a href="docs/pestanas.webm">as video</a> · <a href="tools/grabar.mjs">how it was recorded</a></sub></p>
 
@@ -121,7 +121,7 @@ Needs Windows 10 or 11 with the WebView2 runtime (it ships with Windows 11 and w
 | Action | How |
 |---|---|
 | See the panel | click the icon · it closes when you click elsewhere, with <kbd>Esc</kbd> or the × |
-| Switch tabs | click, the mouse wheel over the tab row, or <kbd>←</kbd> <kbd>→</kbd> |
+| Switch tabs | click the list on the left (each AI with its color and percentage), <kbd>↑</kbd> <kbd>↓</kbd> in the list or <kbd>←</kbd> <kbd>→</kbd> |
 | Refresh | the "actualizar" button, <kbd>F5</kbd> or the icon's menu |
 | Quit | "salir" in the panel (two taps), the icon's menu, or `cupo.exe --quit` |
 
