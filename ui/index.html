@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>cupo</title>
+<!--css-->
+</head>
+<body>
+<div class="frame">
+
+  <header class="titlebar">
+    <div class="brand" data-drag>
+      <span class="mark" id="mark"></span>
+      <span class="word">cupo <em>ia</em></span>
+    </div>
+    <div class="grow" data-drag></div>
+    <div class="wbtns">
+      <button class="wbtn close" data-win="close" aria-label="Cerrar" title="Cerrar el panel (cupo sigue en la bandeja)">
+        <svg viewBox="0 0 10 10"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="IAs"></nav>
+
+  <main class="page" id="page" role="tabpanel"></main>
+
+  <footer class="pie">
+    <span class="estado" id="estado"></span>
+    <span class="grow"></span>
+    <button class="link" data-act="actualizar" title="Pedir todo de nuevo (F5)">actualizar</button>
+    <button class="link peligro" data-act="salir" title="Cierra cupo y saca el icono de la bandeja">salir</button>
+  </footer>
+
+  <div class="rz n" data-rz="n"></div>
+  <div class="rz s" data-rz="s"></div>
+  <div class="rz e" data-rz="e"></div>
+  <div class="rz w" data-rz="w"></div>
+  <div class="rz ne" data-rz="ne"></div>
+  <div class="rz nw" data-rz="nw"></div>
+  <div class="rz se" data-rz="se"></div>
+  <div class="rz sw" data-rz="sw"></div>
+</div>
+<!--js-->
+</body>
+</html>

@@ -1,0 +1,5 @@
+data/
+dist/
+*-256.png
+*.lnk
+tools/.demo/

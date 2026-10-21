@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 520" width="1280" height="520" role="img" aria-labelledby="t d">
+  <title id="t">cupo</title>
+  <desc id="d">The cupo icon, two rings filling up: the session outside, the week inside. Next to it, the cupo ia wordmark, the line "how much you have left of every AI", the eleven AIs it tracks and three facts: 2 MB at rest, 0 background polling, 11 AIs.</desc>
+  <defs>
+    <radialGradient id="luzA" cx="0.22" cy="0.5" r="0.55">
+      <stop offset="0" stop-color="#84d4ab" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#84d4ab" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="luzB" cx="0.92" cy="0.1" r="0.5">
+      <stop offset="0" stop-color="#ff8f7a" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#ff8f7a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="brillo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="halo" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="puntos" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity=".035"/>
+    </pattern>
+    <style>
+      .m { font-family: "Cascadia Code", "Cascadia Mono", SFMono-Regular, Consolas, Menlo, monospace; }
+      .ia { font-size: 21px; fill: #7a7e8b; letter-spacing: .5px; }
+      .dato { font-size: 17px; fill: #b0b3bd; }
+      .num { font-size: 17px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="1278" height="518" rx="30" fill="#0a0b0d"/>
+  <rect x="1" y="1" width="1278" height="518" rx="30" fill="url(#puntos)"/>
+  <rect x="1" y="1" width="1278" height="518" rx="30" fill="url(#luzA)"/>
+  <rect x="1" y="1" width="1278" height="518" rx="30" fill="url(#luzB)"/>
+  <rect x="1.5" y="1.5" width="1277" height="517" rx="29.5" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
+
+  <!-- el icono: dos anillos que se llenan desde las 12 -->
+  <g transform="rotate(-90 280 260)" fill="none" stroke-width="26" stroke-linecap="round">
+    <circle cx="280" cy="260" r="150" stroke="#1d2027"/>
+    <circle cx="280" cy="260" r="86" stroke="#1d2027"/>
+    <circle cx="280" cy="260" r="150" stroke="#84d4ab" stroke-dasharray="942.48" stroke-dashoffset="358.14" filter="url(#brillo)">
+      <animate attributeName="stroke-dashoffset" values="942.48;942.48;358.14" dur="2s" begin="0s" fill="freeze" calcMode="spline" keyTimes="0;.1;1" keySplines="0 0 1 1;.2 .7 .2 1"/>
+    </circle>
+    <circle cx="280" cy="260" r="86" stroke="#f0c674" stroke-dasharray="540.35" stroke-dashoffset="335.02" filter="url(#brillo)">
+      <animate attributeName="stroke-dashoffset" values="540.35;540.35;335.02" dur="2.25s" begin="0s" fill="freeze" calcMode="spline" keyTimes="0;.2;1" keySplines="0 0 1 1;.2 .7 .2 1"/>
+    </circle>
+  </g>
+  <g class="m" text-anchor="middle" opacity="1">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.727;1" dur="2.20s" begin="0s" fill="freeze"/>
+    <text x="280" y="258" font-size="40" font-weight="200" fill="#e8e9ed">62<tspan font-size="20" fill="#7a7e8b">%</tspan></text>
+    <text x="280" y="286" font-size="13" letter-spacing="3" fill="#7a7e8b">SESSION</text>
+  </g>
+
+  <!-- la marca -->
+  <g class="m">
+    <circle cx="528" cy="132" r="7" fill="#84d4ab" filter="url(#halo)">
+      <animate attributeName="opacity" values="1;.35;1" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="556" y="160" font-size="92" font-weight="300" letter-spacing="3" fill="#e8e9ed">cupo<tspan dx="18" font-style="italic" fill="#84d4ab" font-weight="300">ia</tspan></text>
+    <text x="560" y="214" font-size="30" font-weight="300" fill="#b0b3bd">what you have left of every AI</text>
+  </g>
+
+  <!-- las IAs, como las pestañas del panel -->
+  <g class="m ia">
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.583;1" dur="1.20s" begin="0s" fill="freeze"/><circle cx="566" cy="276" r="5" fill="#f0c674"/><text x="580" y="283">claude</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.615;1" dur="1.30s" begin="0s" fill="freeze"/><circle cx="678" cy="276" r="5" fill="#84d4ab"/><text x="692" y="283">codex</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.643;1" dur="1.40s" begin="0s" fill="freeze"/><circle cx="778" cy="276" r="5" fill="#ff6b6b"/><text x="792" y="283">antigravity</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.667;1" dur="1.50s" begin="0s" fill="freeze"/><circle cx="950" cy="276" r="5" fill="#84d4ab"/><text x="964" y="283">grok</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.688;1" dur="1.60s" begin="0s" fill="freeze"/><circle cx="1040" cy="276" r="5" fill="#84d4ab"/><text x="1054" y="283">kimi</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.706;1" dur="1.70s" begin="0s" fill="freeze"/><circle cx="566" cy="316" r="5" fill="#4b4f5b"/><text x="580" y="323">deepseek</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.722;1" dur="1.80s" begin="0s" fill="freeze"/><circle cx="706" cy="316" r="5" fill="#4b4f5b"/><text x="720" y="323">qwen</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.737;1" dur="1.90s" begin="0s" fill="freeze"/><circle cx="800" cy="316" r="5" fill="#4b4f5b"/><text x="814" y="323">you.com</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.750;1" dur="2.00s" begin="0s" fill="freeze"/><circle cx="928" cy="316" r="5" fill="#4b4f5b"/><text x="942" y="323">mistral</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.762;1" dur="2.10s" begin="0s" fill="freeze"/><circle cx="1058" cy="316" r="5" fill="#84d4ab"/><text x="1072" y="323">copilot</text></g>
+    <g opacity="1"><animate attributeName="opacity" values="0;0;1" keyTimes="0;0.773;1" dur="2.20s" begin="0s" fill="freeze"/><circle cx="1188" cy="316" r="5" fill="#84d4ab"/><text x="1202" y="323">z.ai</text></g>
+  </g>
+
+  <!-- tres datos -->
+  <g class="m" opacity="1">
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.741;1" dur="2.70s" begin="0s" fill="freeze"/>
+    <rect x="560" y="370" width="196" height="54" rx="14" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+    <text x="580" y="404" class="dato"><tspan class="num" fill="#84d4ab">2 MB</tspan> at rest</text>
+    <rect x="770" y="370" width="296" height="54" rx="14" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+    <text x="790" y="404" class="dato"><tspan class="num" fill="#f0c674">0</tspan> background polls</text>
+    <rect x="1080" y="370" width="150" height="54" rx="14" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+    <text x="1100" y="404" class="dato"><tspan class="num" fill="#ff8f7a">11</tspan> AIs</text>
+  </g>
+  <text x="1236" y="478" class="m" font-size="14" letter-spacing="2" fill="#4b4f5b" text-anchor="end">WINDOWS · GO · WEBVIEW2</text>
+</svg>
